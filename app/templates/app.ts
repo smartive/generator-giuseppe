@@ -1,5 +1,5 @@
 import {registerControllersFromFolder} from 'giuseppe';
-import * as bodyParser from 'body-parser';
+import bodyParser = require('body-parser');
 import express = require('express');
 
 const app = express(),

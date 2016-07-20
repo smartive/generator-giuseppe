@@ -105,7 +105,7 @@ class GiuseppeGenerator extends generators.Base {
 
         let deps = ['giuseppe', 'express', 'body-parser'],
             devDeps = ['del-cli', 'typescript', 'typings', 'tslint'],
-            globalTypings = ['dt~express', 'dt~express-serve-static-core', 'dt~http-status', 'dt~mime', 'dt~node', 'dt~serve-static'],
+            globalTypings = ['dt~express', 'dt~express-serve-static-core', 'dt~http-status', 'dt~mime', 'dt~node', 'dt~serve-static', 'dt~body-parser'],
             devTypings = [],
             devGlobalTypings = [];
 
