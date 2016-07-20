@@ -73,6 +73,10 @@ class GiuseppeGenerator extends generators.Base {
                         name: 'HTTP basic auth',
                         value: 'basic',
                         short: 'Basic'
+                    }, {
+                        name: 'Local auth (user / pass)',
+                        value: 'local',
+                        short: 'Local'
                     }
                 ],
                 when: options => options.needAuth
@@ -100,7 +104,7 @@ class GiuseppeGenerator extends generators.Base {
         this.log(`${chalk.blue('Install')} - installing dependencies ${chalk.dim('(npm and typings)')}.`);
 
         let deps = ['giuseppe', 'express', 'body-parser'],
-            devDeps = ['typescript', 'typings', 'tslint'],
+            devDeps = ['del-cli', 'typescript', 'typings', 'tslint'],
             globalTypings = ['dt~express', 'dt~express-serve-static-core', 'dt~http-status', 'dt~mime', 'dt~node', 'dt~serve-static'],
             devTypings = [],
             devGlobalTypings = [];
@@ -111,8 +115,8 @@ class GiuseppeGenerator extends generators.Base {
             devGlobalTypings.push('dt~mocha');
         }
 
-        this.npmInstall(deps, { save: true });
-        this.npmInstall(devDeps, { saveDev: true });
+        this.npmInstall(deps, { save: true, q: true });
+        this.npmInstall(devDeps, { saveDev: true, q: true });
         this.runInstall('typings', globalTypings, { save: true, global: true });
         if (devTypings.length) this.runInstall('typings', devTypings, { saveDev: true });
         if (devGlobalTypings.length) this.runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
