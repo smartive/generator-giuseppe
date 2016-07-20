@@ -1,0 +1,19 @@
+{
+  "name": "<%= projectName %>",
+  "version": "0.1.0",
+  "description": "A wep app, powered by giuseppe",
+  "main": "build/app.js",
+  "scripts": {
+    "bootstrap": "npm install -q && typings install",
+    "start": "node .",
+    "clean": "del ./build",
+    "predevelop": "npm run clean",
+    "develop": "tsc --watch --sourceMap --pretty",
+    "pretest": "npm run clean && tsc",
+    "test": "istanbul cover -x \"**/*.spec.*\" _mocha -- --ui bdd ./build/*.spec.js ./build/**/*.spec.js",
+    "prebuild": "npm run bootstrap && npm run clean",
+    "build": "tsc -d && del './build/**/*.spec*'"
+  },
+  "author": "<%= gitUser %> <<%= gitEmail %>>",
+  "license": "MIT"
+}

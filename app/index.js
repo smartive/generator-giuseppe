@@ -1,6 +1,9 @@
 const generators = require('yeoman-generator'),
     yosay = require('yosay'),
-    chalk = require('chalk');
+    chalk = require('chalk'),
+    path = require('path');
+
+const tplFiles = require('./files');
 
 class GiuseppeGenerator extends generators.Base {
     constructor(args, options) {
@@ -19,6 +22,17 @@ class GiuseppeGenerator extends generators.Base {
                 name: 'name',
                 message: 'The name of your app',
                 default: this.appname
+            }, {
+                type: 'confirm',
+                name: 'createRootFolder',
+                message: 'Create a root folder for the app',
+                default: false
+            }, {
+                type: 'input',
+                name: 'rootFolderName',
+                message: 'The name of your root folder',
+                default: options => options.name.split(' ').join('-'),
+                when: options => options.createRootFolder
             }, {
                 type: 'confirm',
                 name: 'createDefaultController',
@@ -52,7 +66,13 @@ class GiuseppeGenerator extends generators.Base {
     }
 
     configuring() {
-        console.log(this.userInput);
+        if (this.userInput.createRootFolder) {
+            this.destinationRoot(path.join(this.destinationRoot(), this.userInput.rootFolderName));
+        }
+    }
+
+    writing() {
+        tplFiles(this).forEach(o => this.fs.copyTpl(o.from, o.to, o.data));
     }
 }
 
