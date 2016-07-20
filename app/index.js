@@ -83,13 +83,47 @@ class GiuseppeGenerator extends generators.Base {
     }
 
     configuring() {
+        this.log(`${chalk.blue('Configure')} - configuring your web app.`);
+
         if (this.userInput.createRootFolder) {
             this.destinationRoot(path.join(this.destinationRoot(), this.userInput.rootFolderName));
         }
     }
 
     writing() {
+        this.log(`${chalk.blue('Write')} - writing files.`);
+
         tplFiles(this).forEach(o => this.fs.copyTpl(o.from, o.to, o.data));
+    }
+
+    install() {
+        this.log(`${chalk.blue('Install')} - installing dependencies ${chalk.dim('(npm and typings)')}.`);
+
+        let deps = ['giuseppe', 'express', 'body-parser'],
+            devDeps = ['typescript', 'typings', 'tslint'],
+            globalTypings = ['dt~express', 'dt~express-serve-static-core', 'dt~http-status', 'dt~mime', 'dt~node', 'dt~serve-static'],
+            devTypings = [],
+            devGlobalTypings = [];
+
+        this.npmInstall(deps, { save: true });
+        this.npmInstall(devDeps, { saveDev: true });
+        this.runInstall('typings', globalTypings, { save: true, global: true });
+        
+        if (this.userInput.testing) {
+            devTypings.push('chai');
+            devGlobalTypings.push('dt~mocha');
+
+            this.runInstall('typings', devTypings, { saveDev: true });
+            this.runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
+        }
+    }
+
+    end() {
+        this.log(`${chalk.green('\n\nAll done!\n')}`);
+        this.log(`To start the app right away use: ${chalk.cyan('npm run build && npm start')}`);
+        this.log(`For your everyday development process use: ${chalk.cyan('npm run develop')}`);
+        this.log(`For more npm run scripts look at the ${chalk.yellow('package.json')} or use: ${chalk.cyan('npm run')}`);
+        this.log(`${chalk.green('\nHave fun using giuseppe :-)')}`);
     }
 }
 

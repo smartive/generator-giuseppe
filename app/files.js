@@ -33,8 +33,10 @@ module.exports = (generator) => {
         files.push(new File(generator, {}, 'controllers/DemoController.ts'));
     }
 
-    if (generator.userInput.createDemoController && generator.userInput.needAuth) {
-        files.push(new File(generator, {}, 'controllers/AuthDemoController.ts'));
+    if (generator.userInput.needAuth) {
+        if (generator.userInput.createDemoController) {
+            files.push(new File(generator, {}, 'controllers/AuthDemoController.ts'));
+        }
     }
 
     return files;
