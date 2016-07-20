@@ -121,7 +121,7 @@ class GiuseppeGenerator extends generators.Base {
         }
 
         if (this.userInput.esVersion !== 'es6') {
-            this.globalTypings.push('dt~es6-shim');
+            globalTypings.push('dt~es6-shim');
         }
 
         this.npmInstall(deps, { save: true, q: true });
