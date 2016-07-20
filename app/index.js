@@ -105,17 +105,17 @@ class GiuseppeGenerator extends generators.Base {
             devTypings = [],
             devGlobalTypings = [];
 
+        if (this.userInput.testing) {
+            devDeps.push('mocha', 'chai', 'istanbul')
+            devTypings.push('chai');
+            devGlobalTypings.push('dt~mocha');
+        }
+
         this.npmInstall(deps, { save: true });
         this.npmInstall(devDeps, { saveDev: true });
         this.runInstall('typings', globalTypings, { save: true, global: true });
-        
-        if (this.userInput.testing) {
-            devTypings.push('chai');
-            devGlobalTypings.push('dt~mocha');
-
-            this.runInstall('typings', devTypings, { saveDev: true });
-            this.runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
-        }
+        if (devTypings.length) this.runInstall('typings', devTypings, { saveDev: true });
+        if (devGlobalTypings.length) this.runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
     }
 
     end() {
