@@ -1,0 +1,20 @@
+{
+    "name": "generator-giuseppe",
+    "version": "0.1.0",
+    "description": "Generator for giuseppe powered web applications",
+    "main": "lib/index.js",
+    "files": [
+        "lib"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "yeoman-generator"
+    ],
+    "author": "Christoph Bühler <christoph@smartive.ch>",
+    "license": "MIT",
+    "dependencies": {
+        "yeoman-generator": "^0.24.1"
+    }
+}
