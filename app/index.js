@@ -52,8 +52,8 @@ class GiuseppeGenerator extends generators.Base {
                 when: options => options.createRootFolder
             }, {
                 type: 'confirm',
-                name: 'createDefaultController',
-                message: 'Create a default controller',
+                name: 'createDemoController',
+                message: 'Create a demo controller',
                 default: true
             }, {
                 type: 'confirm',

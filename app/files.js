@@ -9,14 +9,16 @@ class File {
 module.exports = (generator) => {
     let files = [];
 
+    let projectName = generator.userInput.name.split(' ').join('-').toLowerCase();
+
     files.push(new File(generator, {
-        projectName: generator.userInput.name.split(' ').join('-').toLowerCase(),
+        projectName: projectName,
         gitUser: generator.user.git.name(),
         gitEmail: generator.user.git.email()
     }, 'package.json'));
 
     files.push(new File(generator, {
-        projectName: generator.userInput.name.split(' ').join('-').toLowerCase()
+        projectName: projectName
     }, 'typings.json'));
 
     files.push(new File(generator, {
@@ -24,6 +26,16 @@ module.exports = (generator) => {
     }, 'tsconfig.json'));
 
     files.push(new File(generator, {}, 'tslint.json'));
+    
+    files.push(new File(generator, {}, 'app.ts'));
+
+    if (generator.userInput.createDemoController) {
+        files.push(new File(generator, {}, 'controllers/DemoController.ts'));
+    }
+
+    if (generator.userInput.createDemoController && generator.userInput.needAuth) {
+        files.push(new File(generator, {}, 'controllers/AuthDemoController.ts'));
+    }
 
     return files;
 };
