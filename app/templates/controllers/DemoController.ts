@@ -17,7 +17,7 @@ class Demo {
 }
 
 @Controller('demo')
-class DemoController {
+export class DemoController {
     private demos: Demo[] = [];
 
     @Get()

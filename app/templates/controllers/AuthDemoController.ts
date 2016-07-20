@@ -1,7 +1,7 @@
 import {Controller, Get} from 'giuseppe';
 
 @Controller('secure/ctrl')
-class AuthDemoController {
+class ControllerAuth {
     @Get()
     public getSecure(): string {
         return 'Success.';
@@ -9,7 +9,7 @@ class AuthDemoController {
 }
 
 @Controller('secure/route')
-class AuthDemoController {
+class RouteAuth {
     @Get()
     public getSecure(): string {
         return 'Success.';
