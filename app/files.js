@@ -39,5 +39,9 @@ module.exports = (generator) => {
         }
     }
 
+    if (generator.userInput.needTest && generator.userInput.createDemoController) {
+        files.push(new File(generator, {}, 'controllers/DemoController.spec.ts'));
+    }
+
     return files;
 };

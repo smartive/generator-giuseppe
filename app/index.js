@@ -57,6 +57,11 @@ class GiuseppeGenerator extends generators.Base {
                 default: true
             }, {
                 type: 'confirm',
+                name: 'needTest',
+                message: `Do you need a testing framework ${chalk.dim('(mocha / chai)')}`,
+                default: true
+            }, {
+                type: 'confirm',
                 name: 'needAuth',
                 message: `Do you need authentication ${chalk.dim('(passport.js)')}`,
                 default: false
@@ -109,7 +114,7 @@ class GiuseppeGenerator extends generators.Base {
             devTypings = [],
             devGlobalTypings = [];
 
-        if (this.userInput.testing) {
+        if (this.userInput.needTest) {
             devDeps.push('mocha', 'chai', 'istanbul')
             devTypings.push('chai');
             devGlobalTypings.push('dt~mocha');
@@ -130,6 +135,7 @@ class GiuseppeGenerator extends generators.Base {
         this.log(`${chalk.green('\n\nAll done!\n')}`);
         this.log(`To start the app right away use: ${chalk.cyan('npm run build && npm start')}`);
         this.log(`For your everyday development process use: ${chalk.cyan('npm run develop')}`);
+        if(this.userInput.needTest) this.log(`To run your unit tests use: ${chalk.cyan('npm test')}`);
         this.log(`For more npm run scripts look at the ${chalk.yellow('package.json')} or use: ${chalk.cyan('npm run')}`);
         this.log(`${chalk.green('\nHave fun using giuseppe :-)')}`);
     }
