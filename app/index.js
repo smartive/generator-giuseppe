@@ -23,6 +23,23 @@ class GiuseppeGenerator extends generators.Base {
                 message: 'The name of your app',
                 default: this.appname
             }, {
+                type: 'list',
+                name: 'esVersion',
+                message: 'Which javascript version do you want?',
+                choices: [
+                    {
+                        name: 'ES 3',
+                        value: 'es3'
+                    }, {
+                        name: 'ES 5',
+                        value: 'es5'
+                    }, {
+                        name: 'ES 6',
+                        value: 'es6'
+                    }
+                ],
+                default: 'es5'
+            }, {
                 type: 'confirm',
                 name: 'createRootFolder',
                 message: 'Create a root folder for the app',

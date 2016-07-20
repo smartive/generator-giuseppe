@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "<%= esVersion %>",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "outDir": "./build",
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

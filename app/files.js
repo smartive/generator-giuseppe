@@ -15,5 +15,15 @@ module.exports = (generator) => {
         gitEmail: generator.user.git.email()
     }, 'package.json'));
 
+    files.push(new File(generator, {
+        projectName: generator.userInput.name.split(' ').join('-').toLowerCase()
+    }, 'typings.json'));
+
+    files.push(new File(generator, {
+        esVersion: generator.userInput.esVersion
+    }, 'tsconfig.json'));
+
+    files.push(new File(generator, {}, 'tslint.json'));
+
     return files;
 };
