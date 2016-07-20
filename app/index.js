@@ -114,6 +114,25 @@ class GiuseppeGenerator extends generators.Base {
             devTypings = [],
             devGlobalTypings = [];
 
+        if (this.userInput.needAuth) {
+            deps.push('passport');
+            globalTypings.push('dt~passport');
+
+            if (this.userInput.passportPlugins.indexOf('bearer') > -1) {
+                deps.push('passport-http-bearer');
+                globalTypings.push('dt~passport-http-bearer');
+            }
+
+            if (this.userInput.passportPlugins.indexOf('basic') > -1) {
+                deps.push('passport-http');
+            }
+
+            if (this.userInput.passportPlugins.indexOf('local') > -1) {
+                deps.push('passport-local');
+                globalTypings.push('dt~passport-local');
+            }
+        }
+
         if (this.userInput.needTest) {
             devDeps.push('mocha', 'chai', 'istanbul')
             devTypings.push('chai');
