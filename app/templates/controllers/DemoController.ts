@@ -16,7 +16,7 @@ class Demo {
     }
 }
 
-@Controller()
+@Controller('demo')
 class DemoController {
     private demos: Demo[] = [];
 

@@ -115,6 +115,10 @@ class GiuseppeGenerator extends generators.Base {
             devGlobalTypings.push('dt~mocha');
         }
 
+        if (this.userInput.esVersion !== 'es6') {
+            this.globalTypings.push('dt~es6-shim');
+        }
+
         this.npmInstall(deps, { save: true, q: true });
         this.npmInstall(devDeps, { saveDev: true, q: true });
         this.runInstall('typings', globalTypings, { save: true, global: true });
