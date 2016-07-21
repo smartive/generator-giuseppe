@@ -13,6 +13,7 @@ let BasicStrategy = require('passport-http').BasicStrategy;
 passport.use(new LocalStrategy((user, pass, done) => {
     if (user === 'demo' && pass === 'auth') {
         done(null, { user });
+        return;
     }
     done(null, false);
 }));
@@ -22,6 +23,7 @@ passport.use(new LocalStrategy((user, pass, done) => {
 passport.use(new BearerStrategy((token, done) => {
     if (token === 'super-secret-bearer-token') {
         done(null, { user: 'bearer' });
+        return;
     }
     done(null, false);
 }));
@@ -30,9 +32,10 @@ passport.use(new BearerStrategy((token, done) => {
 
 passport.use(new BasicStrategy((user, pass, done) => {
     if (user === 'demo' && pass === 'auth') {
-        return done(null, { user });
+        done(null, { user });
+        return;
     }
-    return done(null, false);
+    done(null, false);
 }));
 <% } -%>
 
