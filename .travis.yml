@@ -3,8 +3,19 @@ node_js:
 - '6'
 - '5'
 - '4.2'
-
 script: npm test
+
+deploy:
+  provider: npm
+  email: christoph.buehler@bluewin.ch
+  api_key:
+    secure: o9/rD0afDYBWxNJkcs7hcTIh5Guo3C/Df2MqW1GkKzT7JLv2Qy1fxJ+6QgLZG3DLLWfAOdPS7Izjq9AEjhx5zMCMLSfqdw8uWfs86g3vpft9FYh/yCFJKcIOyv1O1VHSPU/N5YnJKicH58aDgeN15o1FlHzxVadcbl5SKJ8vtGVBGsESa1VLJthcYCdYPtbb1h2nYS9iM0W6db/wlVJ4JUbyJqbqhJW8GOHm6Dx50qW5OxhtVmwaeKhmJkDDTEvHvXj9dcROBxG1Y3ueIZEoI2F2iD7AXrQM6jL7rPEaPvSiTiENBfxlqtDlLbiPc9mdkYRfwecD6Tjps+Q8EXZLmf2Gzs5akApRfFnZ3aMWg37oD9wlXMQ4ip2dt+JiEiDndo2HiUAckvgpaiaLZCo6HkccxAJWzXYz9FAmTbvBZH91NFK+A0L8bR5VwOUpt0soYSNxVNm6s1UWdTipG36xeJ6TvFZ5R36ZsrLWbvu+GSHsDA6VQjbJgyoHX16eJ32PzH6uqprVUA6BsY097rngZLcS4jw4HsDdfxFC0b7ecf3BuQqYBPnXOaMSnjdI5RifGMz0Q8uHAvog6d3rt9kByuZy+iEZNTVEtEA0y9b+VtHoR1/6Gi4VJOS/0fry8q4cQA3/WN2bE6Vl9XSttEicn5Kn/7faWgyvz3CL44oxUyA=
+  on:
+    tags: true
+    repo: smartive/generator-giuseppe
 
 notifications:
   email: false
+  slack:
+    rooms:
+      secure: hpPP6uWArQ9sypq7ouzGozs+oyNCHXuHgN8xyrN24dAyHuP1Az285R0pyJ59WiD/1Zg4sVSChxbilbZ3e38LL6q+mbiXWjcQqEdffDPpKNvXZclcFm/atYJPtltf0eZZp/JcmKZt8ym6BxytxZT5Yr2QZqcvvWTv/wIPKThdpOfbwDXubb2bJ4SCrYQie0CV39o52yGGoTAz0SbiX5VvhGX1I93nOaoRQTNJmK4OKGmJ8sv0ydue+Nv1mmSWt0IVAZW03wB/0cw1sYmC4XZ4eT+T6+lvPvc3BUuixDfKimXF21FyoLjMF+dOPqAdjLY/QMASdWmVpdede/DBHLhE5EVNEbDe4Rsem9I2T7WgFSkSW1i/ZWR6HEbWH+ERPDDyOWz1fUcnybOk4cV5K40VO9yJ/fpzm5em9p5l4yaafIzzSYxvYJ8kHKDinZHVJGKj/PffT7gAIT4jwjoxlw/WOXHljSjFv+j1vX7oH/mFFUjIh53eBZR4Ne2gwKF4IQq6+xSwLkFUenp91Vg1WdlLtqsPKBCxXGlPmS+qb16dvWvluERBCuAVvnvRNwi/4IUTQlwM89RtRGfZEj5ZyO9BQyLjS+9zsda6pAelDVBr5xiDsplxZvqAS5u4z3uXvJE9i+AuzdkdwjWgiVod8+bwDRxt9Ou7amqJmi5k8S+nwUI=
