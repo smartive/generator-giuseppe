@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Generator for giuseppe powered web applications",
   "main": "lib/index.js",
+  "scripts": {
+      "test": "echo 'No tests yet..' && exit 0"
+  },
   "files": [
     "app"
   ],
