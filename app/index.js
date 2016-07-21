@@ -28,9 +28,6 @@ class GiuseppeGenerator extends generators.Base {
                 message: 'Which javascript version do you want?',
                 choices: [
                     {
-                        name: 'ES 3',
-                        value: 'es3'
-                    }, {
                         name: 'ES 5',
                         value: 'es5'
                     }, {
