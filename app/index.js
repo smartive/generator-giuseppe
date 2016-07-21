@@ -55,7 +55,7 @@ class GiuseppeGenerator extends generators.Base {
             }, {
                 type: 'confirm',
                 name: 'needTest',
-                message: `Do you need a testing framework ${chalk.dim('(mocha / chai)')}`,
+                message: `Do you need a testing framework ${chalk.dim('(mocha and chai)')}`,
                 default: true
             }, {
                 type: 'confirm',
