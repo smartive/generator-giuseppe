@@ -1,14 +1,14 @@
 import {Controller, Get, Put, Post, Delete, ErrorHandler, UrlParam, Body, RouteError} from 'giuseppe';
 import {Request, Response} from 'express';
 
-class DemoNotFound extends RouteError {
+export class DemoNotFound extends RouteError {
     constructor(id: number) {
         super();
         this.message = `Demo object with id "${id}" was not found.`;
     }
 }
 
-class Demo {
+export class Demo {
     public id: number;
 
     constructor(value: any) {
