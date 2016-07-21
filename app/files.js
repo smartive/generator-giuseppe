@@ -27,13 +27,16 @@ module.exports = (generator) => {
 
     files.push(new File(generator, {}, 'tslint.json'));
     
-    files.push(new File(generator, {}, 'app.ts'));
+    files.push(new File(generator, {needAuth: generator.userInput.needAuth}, 'app.ts'));
 
     if (generator.userInput.createDemoController) {
         files.push(new File(generator, {}, 'controllers/DemoController.ts'));
     }
 
     if (generator.userInput.needAuth) {
+
+        files.push(new File(generator, {}, 'Authentication.ts'));
+
         if (generator.userInput.createDemoController) {
             files.push(new File(generator, {}, 'controllers/AuthDemoController.ts'));
         }

@@ -1,6 +1,7 @@
 import {Controller, Get} from 'giuseppe';
+import passport from '../Authentication';
 
-@Controller('secure/ctrl')
+@Controller('secure/ctrl', passport.authenticate('basic', { session: false }))
 class ControllerAuth {
     @Get()
     public getSecure(): string {
@@ -10,7 +11,7 @@ class ControllerAuth {
 
 @Controller('secure/route')
 class RouteAuth {
-    @Get()
+    @Get('', passport.authenticate('basic', { session: false }))
     public getSecure(): string {
         return 'Success.';
     }

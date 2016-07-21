@@ -1,13 +1,15 @@
 import {registerControllersFromFolder} from 'giuseppe';
 import bodyParser = require('body-parser');
 import express = require('express');
+<% if (needAuth) { -%>import passport from './Authentication';<% } -%>    
 
 const app = express(),
     port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
-registerControllersFromFolder({ folderPath: './build/controllers' }, '/api')
+registerControllersFromFolder({ folderPath: './build/controllers', matchRegExp: /^((?!spec).)*[.]js$/ }, '/api')
     .then(router => {
         app.use(router);
         app.listen(port, () => {
