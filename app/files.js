@@ -34,11 +34,16 @@ module.exports = (generator) => {
     }
 
     if (generator.userInput.needAuth) {
-
-        files.push(new File(generator, {}, 'Authentication.ts'));
+        let data = {
+            bearer: generator.userInput.passportPlugins.indexOf('bearer') > -1,
+            local: generator.userInput.passportPlugins.indexOf('local') > -1,
+            basic: generator.userInput.passportPlugins.indexOf('basic') > -1
+        }
+        
+        files.push(new File(generator, data, 'Authentication.ts'));
 
         if (generator.userInput.createDemoController) {
-            files.push(new File(generator, {}, 'controllers/AuthDemoController.ts'));
+            files.push(new File(generator, data, 'controllers/AuthDemoController.ts'));
         }
     }
 
