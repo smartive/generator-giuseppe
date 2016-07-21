@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 <% } -%>
 
-registerControllersFromFolder({ folderPath: './build/controllers', matchRegExp: /^((?!spec).)*[.]js$/ }, '/api')
+registerControllersFromFolder({ folderPath: './build/controllers' }, '/api')
     .then(router => {
         app.use(router);
         app.listen(port, () => {
