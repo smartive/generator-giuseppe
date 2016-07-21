@@ -3,6 +3,10 @@
 This is a [`yeoman`](http://yeoman.io/) generator for [`giuseppe`](https://github.com/smartive/giuseppe).
 It will ask you several questions and scaffolds a whole web application project for you.
 
+##### A bunch of badges
+
+[![Build Status](https://travis-ci.org/smartive/generator-giuseppe.svg)](https://travis-ci.org/smartive/generator-giuseppe) [![npm](https://img.shields.io/npm/v/generator-giuseppe.svg?maxAge=3600)](https://www.npmjs.com/package/generator-giuseppe)
+
 ## How to use
 
 TL;DR:
