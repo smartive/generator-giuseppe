@@ -1,6 +1,6 @@
 {
   "name": "generator-giuseppe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generator for giuseppe powered web applications",
   "main": "lib/index.js",
   "scripts": {
@@ -9,8 +9,19 @@
   "files": [
     "app"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/smartive/generator-giuseppe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smartive/generator-giuseppe/issues"
+  },
+  "homepage": "https://github.com/smartive/generator-giuseppe#readme",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "yeoman",
+    "giuseppe",
+    "express"
   ],
   "author": "Christoph Bühler <christoph@smartive.ch>",
   "license": "MIT",
