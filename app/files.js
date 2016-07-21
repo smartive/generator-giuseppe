@@ -17,6 +17,8 @@ module.exports = (generator) => {
         gitEmail: generator.user.git.email()
     }, 'package.json'));
 
+    files.push(new File(generator, {}, '_gitignore', '.gitignore'));
+
     files.push(new File(generator, {
         projectName: projectName
     }, 'typings.json'));
@@ -26,8 +28,8 @@ module.exports = (generator) => {
     }, 'tsconfig.json'));
 
     files.push(new File(generator, {}, 'tslint.json'));
-    
-    files.push(new File(generator, {needAuth: generator.userInput.needAuth}, 'app.ts'));
+
+    files.push(new File(generator, { needAuth: generator.userInput.needAuth }, 'app.ts'));
 
     if (generator.userInput.createDemoController) {
         files.push(new File(generator, {}, 'controllers/DemoController.ts'));
@@ -39,7 +41,7 @@ module.exports = (generator) => {
             local: generator.userInput.passportPlugins.indexOf('local') > -1,
             basic: generator.userInput.passportPlugins.indexOf('basic') > -1
         }
-        
+
         files.push(new File(generator, data, 'Authentication.ts'));
 
         if (generator.userInput.createDemoController) {
