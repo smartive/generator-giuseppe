@@ -3,6 +3,7 @@ node_js:
 - '6'
 - '5'
 - '4.2'
+
 script: npm test
 
 deploy:
