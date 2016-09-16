@@ -1,9 +1,8 @@
+import tplFiles from './files';
 import * as chalk from 'chalk';
 import * as path from 'path';
 import * as yeomanGenerator from 'yeoman-generator';
 import yosay = require('yosay');
-
-const tplFiles = require('./files');
 
 class GiuseppeGenerator extends yeomanGenerator.Base {
     private userInput: any = {};
