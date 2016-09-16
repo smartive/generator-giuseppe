@@ -8,3 +8,5 @@ node_modules/
 ### Generated files
 app/*.ts
 typings
+tsconfig.json
+typings.json
