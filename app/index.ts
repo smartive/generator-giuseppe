@@ -1,21 +1,18 @@
-const generators = require('yeoman-generator'),
-    yosay = require('yosay'),
-    chalk = require('chalk'),
-    path = require('path');
+import * as chalk from 'chalk';
+import * as path from 'path';
+import * as yeomanGenerator from 'yeoman-generator';
+import yosay = require('yosay');
 
 const tplFiles = require('./files');
 
-class GiuseppeGenerator extends generators.Base {
-    constructor(args, options) {
-        super(args, options);
-        this.userInput = {};
-    }
+class GiuseppeGenerator extends yeomanGenerator.Base {
+    private userInput: any = {};
 
-    initializing() {
+    public initializing() {
         this.log(yosay(`Welcome to the ${chalk.blue('giuseppe')} generator, I'll compose a giuseppe app for you.`));
     }
 
-    prompting() {
+    public prompting() {
         return this.prompt([
             {
                 type: 'input',
@@ -40,28 +37,28 @@ class GiuseppeGenerator extends generators.Base {
                 type: 'confirm',
                 name: 'createRootFolder',
                 message: 'Create a root folder for the app',
-                default: false
+                default: 'false'
             }, {
                 type: 'input',
                 name: 'rootFolderName',
                 message: 'The name of your root folder',
-                default: options => options.name.split(' ').join('-'),
-                when: options => options.createRootFolder
+                default: (options: any) => options.name.split(' ').join('-'),
+                when: (options: any) => options.createRootFolder
             }, {
                 type: 'confirm',
                 name: 'createDemoController',
                 message: 'Create a demo controller',
-                default: true
+                default: 'true'
             }, {
                 type: 'confirm',
                 name: 'needTest',
                 message: `Do you need a testing framework ${chalk.dim('(mocha and chai)')}`,
-                default: true
+                default: 'true'
             }, {
                 type: 'confirm',
                 name: 'needAuth',
                 message: `Do you need authentication ${chalk.dim('(passport.js)')}`,
-                default: false
+                default: 'false'
             }, {
                 type: 'checkbox',
                 name: 'passportPlugins',
@@ -81,14 +78,14 @@ class GiuseppeGenerator extends generators.Base {
                         short: 'Local'
                     }
                 ],
-                when: options => options.needAuth
+                when: (options: any) => options.needAuth
             }
         ]).then(answers => {
             this.userInput = answers;
         });
     }
 
-    configuring() {
+    public configuring() {
         this.log(`${chalk.blue('Configure')} - configuring your web app.`);
 
         if (this.userInput.createRootFolder) {
@@ -96,13 +93,13 @@ class GiuseppeGenerator extends generators.Base {
         }
     }
 
-    writing() {
+    public writing() {
         this.log(`${chalk.blue('Write')} - writing files.`);
 
         tplFiles(this).forEach(o => this.fs.copyTpl(o.from, o.to, o.data));
     }
 
-    install() {
+    public install() {
         this.log(`${chalk.blue('Install')} - installing dependencies ${chalk.dim('(npm and typings)')}.`);
 
         let deps = ['giuseppe', 'express', 'body-parser'],
@@ -142,16 +139,16 @@ class GiuseppeGenerator extends generators.Base {
 
         this.npmInstall(deps, { save: true, q: true });
         this.npmInstall(devDeps, { saveDev: true, q: true });
-        this.runInstall('typings', globalTypings, { save: true, global: true });
-        if (devTypings.length) this.runInstall('typings', devTypings, { saveDev: true });
-        if (devGlobalTypings.length) this.runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
+        (this as any).runInstall('typings', globalTypings, { save: true, global: true });
+        if (devTypings.length) (this as any).runInstall('typings', devTypings, { saveDev: true });
+        if (devGlobalTypings.length) (this as any).runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
     }
 
-    end() {
+    public end() {
         this.log(`${chalk.green('\n\nAll done!\n')}`);
         this.log(`To start the app right away use: ${chalk.cyan('npm run build && npm start')}`);
         this.log(`For your everyday development process use: ${chalk.cyan('npm run develop')}`);
-        if(this.userInput.needTest) this.log(`To run your unit tests use: ${chalk.cyan('npm test')}`);
+        if (this.userInput.needTest) this.log(`To run your unit tests use: ${chalk.cyan('npm test')}`);
         this.log(`For more npm run scripts look at the ${chalk.yellow('package.json')} or use: ${chalk.cyan('npm run')}`);
         this.log(`${chalk.green('\nHave fun using giuseppe :-)')}`);
     }
