@@ -3,14 +3,21 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+#### Added
+- ES5 compatibility
 
+#### Changed
+- Rewrote the generator to `typescript`
+
+#### Removed
+- `--declaraton` flag in the package.json (build task) of the app 
 
 ## [0.1.1]
-### Added
+#### Added
 - More information in `package.json`
 
 ## [0.1.0]
-### Added
+#### Added
 - First version of the generator
 - README
 - CHANGELOG
