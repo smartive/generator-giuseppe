@@ -12,7 +12,7 @@
     "pretest": "npm run clean && tsc",
     "test": "istanbul cover -x \"**/*.spec.*\" _mocha -- --ui bdd \"./build/**/*.spec.js\"",
     "prebuild": "npm run bootstrap && npm run clean",
-    "build": "tsc --declaration && del './build/**/*.spec*'"
+    "build": "tsc && del './build/**/*.spec*'"
   },
   "author": "<%= gitUser %> <<%= gitEmail %>>",
   "license": "MIT"
