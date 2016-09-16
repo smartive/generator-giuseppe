@@ -38,7 +38,7 @@ yo giuseppe
 All the essential questions are answered and the corresponding project is generated for you.
 So in that sense:
 
-Happy coding with giuseppe :smile:
+Happy coding with [giuseppe](https://github.com/smartive/giuseppe) :smile:
 
 ## Changelog
 
