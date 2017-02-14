@@ -9,12 +9,10 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-<% if (needTest) { -%>
   "typeRoots": [
     "./node_modules/@types",
     "./node_modules"
   ],
-<% } -%>
   "exclude": [
     "node_modules",
     "build"
