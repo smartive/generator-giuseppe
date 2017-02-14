@@ -109,8 +109,8 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
 
         if (this.userInput.needAuth) {
             deps.push('passport');
-            globalTypings.push('dt~passport');
-
+            devDeps.push('@types/passport');
+            
             if (this.userInput.passportPlugins.indexOf('bearer') > -1) {
                 deps.push('passport-http-bearer');
                 globalTypings.push('dt~passport-http-bearer');
@@ -127,9 +127,7 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
         }
 
         if (this.userInput.needTest) {
-            devDeps.push('mocha', 'chai', 'istanbul')
-            devTypings.push('chai');
-            devGlobalTypings.push('dt~mocha');
+            devDeps.push('mocha', '@types/mocha', 'chai', '@types/chai', 'istanbul')
         }
 
         if (this.userInput.esVersion !== 'es6') {
