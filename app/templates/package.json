@@ -6,13 +6,13 @@
   "scripts": {
     "bootstrap": "npm install -q && typings install",
     "start": "node .",
-    "clean": "del ./build",
+    "clean": "del-cli ./build",
     "predevelop": "npm run clean",
     "develop": "tsc --watch --sourceMap --pretty",
     "pretest": "npm run clean && tsc",
     "test": "istanbul cover -x \"**/*.spec.*\" _mocha -- --ui bdd \"./build/**/*.spec.js\"",
     "prebuild": "npm run bootstrap && npm run clean",
-    "build": "tsc && del './build/**/*.spec*'"
+    "build": "tsc && del-cli './build/**/*.spec*'"
   },
   "author": "<%= gitUser %> <<%= gitEmail %>>",
   "license": "MIT"

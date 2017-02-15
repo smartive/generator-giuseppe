@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo 'No tests yet..' && exit 0",
     "develop": "tsc --watch --sourceMap --pretty",
-    "build": "npm install -q && typings install && del './app/*.js' && tsc"
+    "build": "npm install -q && typings install && del-cli './app/*.js' && tsc"
   },
   "files": [
     "app"

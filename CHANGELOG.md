@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Use `del-cli` executable instead of `del` in order to not interfere with system commands on Windows ([#7](https://github.com/smartive/generator-giuseppe/issues/7))
 
 ## [0.2.0]
 #### Added
@@ -12,7 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Rewrote the generator to `typescript`
 
 #### Removed
-- `--declaraton` flag in the package.json (build task) of the app 
+- `--declaraton` flag in the package.json (build task) of the app
 
 ## [0.1.1]
 #### Added
