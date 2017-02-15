@@ -114,9 +114,7 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
                 '@types/node',
                 '@types/serve-static',
                 '@types/body-parser'
-                ],
-            devTypings = [],
-            devGlobalTypings = [];
+                ]
 
         if (this.userInput.needAuth) {
             deps.push('passport');
@@ -147,9 +145,6 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
 
         this.npmInstall(deps, { save: true, q: true });
         this.npmInstall(devDeps, { saveDev: true, q: true });
-        (this as any).runInstall('typings', globalTypings, { save: true, global: true });
-        if (devTypings.length) (this as any).runInstall('typings', devTypings, { saveDev: true });
-        if (devGlobalTypings.length) (this as any).runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
     }
 
     public end() {
