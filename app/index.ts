@@ -102,18 +102,27 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
         this.log(`${chalk.blue('Install')} - installing dependencies ${chalk.dim('(npm and typings)')}.`);
 
         let deps = ['giuseppe', 'express', 'body-parser'],
-            devDeps = ['del-cli', 'typescript', 'typings', 'tslint'],
-            globalTypings = ['dt~express', 'dt~express-serve-static-core', 'dt~http-status', 'dt~mime', 'dt~node', 'dt~serve-static', 'dt~body-parser'],
-            devTypings = [],
-            devGlobalTypings = [];
+            devDeps = [
+                'del-cli',
+                'typescript',
+                'typings',
+                'tslint',
+                '@types/express',
+                '@types/express-serve-static-core',
+                '@types/http-status',
+                '@types/mime',
+                '@types/node',
+                '@types/serve-static',
+                '@types/body-parser'
+                ]
 
         if (this.userInput.needAuth) {
             deps.push('passport');
-            globalTypings.push('dt~passport');
+            devDeps.push('@types/passport');
 
             if (this.userInput.passportPlugins.indexOf('bearer') > -1) {
                 deps.push('passport-http-bearer');
-                globalTypings.push('dt~passport-http-bearer');
+                devDeps.push('@types/passport-http-bearer');
             }
 
             if (this.userInput.passportPlugins.indexOf('basic') > -1) {
@@ -122,25 +131,20 @@ class GiuseppeGenerator extends yeomanGenerator.Base {
 
             if (this.userInput.passportPlugins.indexOf('local') > -1) {
                 deps.push('passport-local');
-                globalTypings.push('dt~passport-local');
+                devDeps.push('@types/passport-local');
             }
         }
 
         if (this.userInput.needTest) {
-            devDeps.push('mocha', 'chai', 'istanbul')
-            devTypings.push('chai');
-            devGlobalTypings.push('dt~mocha');
+            devDeps.push('mocha', '@types/mocha', 'chai', '@types/chai', 'istanbul')
         }
 
         if (this.userInput.esVersion !== 'es6') {
-            globalTypings.push('dt~es6-shim');
+            devDeps.push('@types/es6-shim');
         }
 
         this.npmInstall(deps, { save: true, q: true });
         this.npmInstall(devDeps, { saveDev: true, q: true });
-        (this as any).runInstall('typings', globalTypings, { save: true, global: true });
-        if (devTypings.length) (this as any).runInstall('typings', devTypings, { saveDev: true });
-        if (devGlobalTypings.length) (this as any).runInstall('typings', devGlobalTypings, { saveDev: true, global: true });
     }
 
     public end() {
