@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Fixed
+#### Added
+- Does use no giuseppe
+
+#### Changed
+- From TS to ES6
+
+#### Fixed
 - Use `del-cli` executable instead of `del` in order to not interfere with system commands on Windows ([#7](https://github.com/smartive/generator-giuseppe/issues/7))
 - Updated to new @types for type definitions.
 
