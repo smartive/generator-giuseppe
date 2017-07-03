@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 #### Added
-- Does use no giuseppe
+- Does use new giuseppe
 
 #### Changed
 - From TS to ES6

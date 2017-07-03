@@ -1,12 +1,17 @@
-### Node template
 # Logs
 logs
 *.log
 npm-debug.log*
-node_modules/
 
-### Testing
-coverage/
+# Dependency directory
+node_modules
 
-### Typescript
-build/
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Typescript stuff
+build
+coverage
