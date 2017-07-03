@@ -4,7 +4,3 @@ logs
 *.log
 npm-debug.log*
 node_modules/
-
-### Generated files
-app/*.js
-typings

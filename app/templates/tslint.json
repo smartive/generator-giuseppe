@@ -1,56 +1,60 @@
 {
+    "extends": "tslint-config-airbnb",
     "rules": {
-        "class-name": true,
-        "curly": true,
-        "eofline": true,
-        "indent": [
-            true,
-            "spaces"
-        ],
+        "function-name": false,
         "max-line-length": [
-            false
+            true,
+            125
         ],
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": [
+                    "public-static-field",
+                    "protected-static-field",
+                    "private-static-field",
+                    "public-instance-field",
+                    "protected-instance-field",
+                    "private-instance-field",
+                    "constructor",
+                    "public-static-method",
+                    "protected-static-method",
+                    "private-static-method",
+                    "public-instance-method",
+                    "protected-instance-method",
+                    "private-instance-method"
+                ]
+            }
         ],
-        "no-arg": true,
-        "no-construct": true,
-        "no-duplicate-key": true,
-        "no-duplicate-variable": true,
-        "no-empty": true,
-        "no-eval": true,
-        "no-trailing-whitespace": true,
-        "no-unused-expression": false,
-        "no-unused-variable": true,
-        "no-unreachable": true,
-        "no-use-before-declare": true,
-        "one-line": [
+        "no-increment-decrement": false,
+        "no-trailing-whitespace": [
             true,
-            "check-open-brace",
-            "check-catch",
-            "check-else",
-            "check-whitespace"
+            "ignore-jsdoc",
+            "ignore-template-strings"
         ],
-        "quotemark": [
-            false
-        ],
-        "semicolon": [
-            true
-        ],
-        "triple-equals": [
+        "ter-arrow-parens": [
             true,
-            "allow-null-check"
+            "as-needed"
         ],
-        "variable-name": false,
-        "whitespace": [
+        "ter-indent": [
             true,
-            "check-decl",
-            "check-operator",
-            "check-separator",
-            "check-type"
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "typedef": [
+            true,
+            "call-signature",
+            "parameter",
+            "property-declaration",
+            "member-variable-declaration"
+        ],
+        "variable-name": [
+            true,
+            "check-format",
+            "ban-keywords",
+            "allow-leading-underscore"
         ]
     }
 }
