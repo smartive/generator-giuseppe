@@ -50,7 +50,7 @@ export class DemoController {
         this.demos.splice(this.demos.indexOf(filtered[0]), 1, body);
     }
 
-    @Delete(':id' <% if(needAuth) { %>, authentication.authenticate('bearer', { session: false }) <% } %>)
+    @Delete(':id'<% if(needAuth) { %>, authentication.authenticate('bearer', { session: false })<% } %>)
     public deleteDemo(@UrlParam('id') id: number): void {
         const filtered = this.demos.filter(d => d.id === id);
         if (!filtered.length) {
